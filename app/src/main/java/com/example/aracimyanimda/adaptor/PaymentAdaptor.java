@@ -7,20 +7,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aracimyanimda.api.response.PaymentResponse;
 import com.example.aracimyanimda.databinding.PaymentRowBinding;
+import com.example.aracimyanimda.model.Payment;
 import com.example.aracimyanimda.viewmodel.PaymentAdapterListener;
 import com.example.aracimyanimda.viewmodel.SharedViewModel;
 
 import java.util.List;
 public class PaymentAdaptor extends RecyclerView.Adapter<PaymentAdaptor.PaymentViewHolder> {
-    private final List<PaymentResponse> paymentMethods; // Ödeme yöntemlerini tutan liste
+    private final List<Payment> paymentMethods; // Ödeme yöntemlerini tutan liste
     private final SharedViewModel sharedViewModel; // Paylaşılan viewModel
     private final Bundle bundle; // Veri iletilmek için kullanılan dizi
     private final PaymentAdapterListener listener; // Ödeme yöntemi seçildiğinde gerçekleştirilecek olay dinleyicisi
 
     // Kurucu metot
-    public PaymentAdaptor(List<PaymentResponse> paymentMethods, SharedViewModel viewModel, Bundle bundle, PaymentAdapterListener listener) {
+    public PaymentAdaptor(List<Payment> paymentMethods, SharedViewModel viewModel, Bundle bundle, PaymentAdapterListener listener) {
         this.paymentMethods = paymentMethods; // Ödeme yöntemlerini ata
         this.sharedViewModel = viewModel; // Paylaşılan viewModel'i ata
         this.bundle = bundle; // Veri dizisini ata
@@ -52,7 +52,7 @@ public class PaymentAdaptor extends RecyclerView.Adapter<PaymentAdaptor.PaymentV
         });
 
         holder.binding.kartBaslik.setText("Card " + (position + 1)); // Kart başlığını ayarla
-        PaymentResponse paymentMethod = paymentMethods.get(position); // Pozisyona göre ödeme yöntemini al
+        Payment paymentMethod = paymentMethods.get(position); // Pozisyona göre ödeme yöntemini al
         holder.bind(paymentMethod); // Görünümü bağla
     }
 
@@ -99,7 +99,7 @@ public class PaymentAdaptor extends RecyclerView.Adapter<PaymentAdaptor.PaymentV
         }
 
         // Ödeme yöntemi verisini görünüme bağlayan metot
-        void bind(PaymentResponse paymentMethod) {
+        void bind(Payment paymentMethod) {
             String maskedCardNumber = maskCardNumber(paymentMethod.getKartNumarasi()); // Kart numarasını maskeler
             binding.kartNumarasi.setText(maskedCardNumber); // Maskelenmiş kart numarasını ayarla
             binding.cvv.setText("***"); // CVV genellikle gizlenir

@@ -2,11 +2,10 @@ package com.example.aracimyanimda.api;
 
 import com.example.aracimyanimda.api.request.LicenseRequest;
 import com.example.aracimyanimda.api.request.LoginRequest;
-import com.example.aracimyanimda.api.request.PaymentCreateRequest;
 import com.example.aracimyanimda.api.request.RegisterFirstRequest;
 import com.example.aracimyanimda.api.request.RegisterRequest;
-import com.example.aracimyanimda.api.response.PaymentResponse;
 import com.example.aracimyanimda.api.response.RentResponse;
+import com.example.aracimyanimda.model.Payment;
 import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.model.Vehicle;
@@ -43,11 +42,11 @@ public interface UserApiService {
 
     // Ödeme yöntemi oluşturur
     @POST("Payment/paymentmethod/create")
-    Call<Void> createPayment(@Body PaymentCreateRequest paymentCreateRequest);
+    Call<Void> createPayment(@Body Payment paymentCreateRequest);
 
     // Kullanıcının ödeme yöntemlerini getirir
     @GET("Payment/paymentmethods")
-    Call<List<PaymentResponse>> getPayment(@Query("user_id") int userId);
+    Call<List<Payment>> getPayment(@Query("user_id") int userId);
 
     // Kullanıcının rezervasyonunu kontrol eder
     @GET("User/rezervasyonkontrol")

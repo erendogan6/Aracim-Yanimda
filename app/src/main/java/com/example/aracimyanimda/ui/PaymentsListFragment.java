@@ -8,19 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
+
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.aracimyanimda.adaptor.PaymentAdaptor;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.response.PaymentResponse;
 import com.example.aracimyanimda.databinding.FragmentPaymentsListBinding;
+import com.example.aracimyanimda.model.Payment;
 import com.example.aracimyanimda.util.UserManager;
 import com.example.aracimyanimda.viewmodel.PaymentAdapterListener;
 import com.example.aracimyanimda.viewmodel.SharedViewModel;
 
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,9 +88,9 @@ public class PaymentsListFragment extends DialogFragment implements PaymentAdapt
     // Ödemeleri getir
     private void fetchPayments() {
         UserApiService service = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class); // Kullanıcı API servisini oluştur
-        service.getPayment(userId).enqueue(new Callback<List<PaymentResponse>>() {
+        service.getPayment(userId).enqueue(new Callback<List<Payment>>() {
             @Override
-            public void onResponse(Call<List<PaymentResponse>> call, Response<List<PaymentResponse>> response) {
+            public void onResponse(Call<List<Payment>> call, Response<List<Payment>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     binding.paymentRecyclerView.setAdapter(new PaymentAdaptor(response.body(), sharedViewModel, getArguments(), PaymentsListFragment.this)); // Ödeme adaptörünü oluştur ve ayarla
                 } else {
@@ -96,7 +99,7 @@ public class PaymentsListFragment extends DialogFragment implements PaymentAdapt
             }
 
             @Override
-            public void onFailure(Call<List<PaymentResponse>> call, Throwable t) {
+            public void onFailure(Call<List<Payment>> call, Throwable t) {
                 logError(new Exception(t)); // Hata durumunda hata günlüğüne kaydet
             }
         });

@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.request.PaymentCreateRequest;
 import com.example.aracimyanimda.databinding.FragmentPaymentBinding;
+import com.example.aracimyanimda.model.Payment;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.util.UserManager;
 import com.example.aracimyanimda.viewmodel.SharedViewModel;
@@ -23,7 +23,6 @@ import com.example.aracimyanimda.viewmodel.SharedViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
 public class PaymentFragment extends DialogFragment {
     private final String TAG = "PaymentFragment";
     private int userId;
@@ -90,7 +89,7 @@ public class PaymentFragment extends DialogFragment {
     private void performPayment() {
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
 
-        Call<Void> call = apiService.createPayment(new PaymentCreateRequest(userId, userName, cardNumber, expirationDate, cvv));
+        Call<Void> call = apiService.createPayment(new Payment(userId, userName, cardNumber, expirationDate, cvv));
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
