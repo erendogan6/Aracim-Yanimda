@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
 
 import android.app.DatePickerDialog;
 import android.icu.util.Calendar;
@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
+
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
+
 import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.databinding.FragmentRezervationDateBinding;
 import com.example.aracimyanimda.model.Vehicle;

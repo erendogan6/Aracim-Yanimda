@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

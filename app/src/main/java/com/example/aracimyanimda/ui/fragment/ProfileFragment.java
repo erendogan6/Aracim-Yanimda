@@ -1,17 +1,19 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
+
 import com.example.aracimyanimda.databinding.FragmentProfilBinding;
 import com.example.aracimyanimda.model.User;
+import com.example.aracimyanimda.ui.activity.LoginActivity;
 import com.example.aracimyanimda.util.SharedPreferencesUtils;
 import com.example.aracimyanimda.util.UserManager;
 

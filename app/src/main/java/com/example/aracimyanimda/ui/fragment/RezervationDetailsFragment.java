@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
 
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
@@ -23,6 +23,7 @@ import com.example.aracimyanimda.databinding.FragmentRezervationDetailsBinding;
 import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.model.Vehicle;
+import com.example.aracimyanimda.ui.activity.MainActivity;
 import com.example.aracimyanimda.util.UserManager;
 
 import java.util.Date;

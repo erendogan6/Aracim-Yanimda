@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;

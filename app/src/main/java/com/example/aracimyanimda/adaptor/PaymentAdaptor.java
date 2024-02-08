@@ -8,8 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aracimyanimda.databinding.PaymentRowBinding;
+import com.example.aracimyanimda.listener.PaymentAdapterListener;
 import com.example.aracimyanimda.model.Payment;
-import com.example.aracimyanimda.viewmodel.PaymentAdapterListener;
 import com.example.aracimyanimda.viewmodel.SharedViewModel;
 
 import java.util.List;

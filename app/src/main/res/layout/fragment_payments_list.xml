@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/navback"
     android:orientation="vertical"
-    tools:context=".ui.PaymentsListFragment">
+    tools:context=".ui.fragment.PaymentsListFragment">
 
     <TextView
         android:id="@+id/textOdeme"

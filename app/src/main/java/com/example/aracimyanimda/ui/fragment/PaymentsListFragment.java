@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -17,9 +17,9 @@ import com.example.aracimyanimda.adaptor.PaymentAdaptor;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
 import com.example.aracimyanimda.databinding.FragmentPaymentsListBinding;
+import com.example.aracimyanimda.listener.PaymentAdapterListener;
 import com.example.aracimyanimda.model.Payment;
 import com.example.aracimyanimda.util.UserManager;
-import com.example.aracimyanimda.viewmodel.PaymentAdapterListener;
 import com.example.aracimyanimda.viewmodel.SharedViewModel;
 
 import java.util.List;

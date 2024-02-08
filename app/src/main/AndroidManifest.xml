@@ -24,13 +24,13 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".ui.PersonInfoActivity"
+            android:name=".ui.activity.PersonInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.RegisterActivity"
+            android:name=".ui.activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,7 +38,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
         </activity>

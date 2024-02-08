@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

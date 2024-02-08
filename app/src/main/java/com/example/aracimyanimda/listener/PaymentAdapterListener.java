@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.viewmodel;
+package com.example.aracimyanimda.listener;
 
 import android.os.Bundle;
 

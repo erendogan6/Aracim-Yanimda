@@ -1,4 +1,5 @@
-package com.example.aracimyanimda.ui;
+package com.example.aracimyanimda.ui.fragment;
+
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -6,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+
 import com.example.aracimyanimda.databinding.FragmentVecihleBinding;
 import com.example.aracimyanimda.model.Vehicle;
 
