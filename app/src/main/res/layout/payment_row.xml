@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/paymentRow"
+    android:gravity="center"
+    android:background="@drawable/button_background"
+    android:layout_margin="15dp"
+    android:padding="20dp"
+    android:orientation="vertical">
+
+    <!-- Kart Başlığı -->
+    <TextView
+        android:id="@+id/kartBaslik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kart 1"
+        android:fontFamily="@font/marko_one"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:layout_weight="1"
+            android:text="Kart Numarası:"
+            android:textSize="18sp"
+            android:textColor="#64DD17"/>
+
+        <TextView
+            android:id="@+id/kartNumarasi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="1234 **** **** **** 3245"
+            android:textIsSelectable="false"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- Son Kullanma Tarihi Satırı -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:text="Son Kullanma Tarihi:"
+            android:textSize="18sp"
+            android:textColor="#64DD17"/>
+
+        <TextView
+            android:id="@+id/sonKullanma"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="12/27"
+            android:textIsSelectable="false"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+    <!-- CVV Satırı -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:text="CVV:"
+            android:textSize="18sp"
+            android:textColor="#64DD17"/>
+
+        <TextView
+            android:id="@+id/cvv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@drawable/edittext_background"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:text="526"
+            android:textIsSelectable="false"
+            android:textSize="18sp"/>
+    </LinearLayout>
+
+</LinearLayout>

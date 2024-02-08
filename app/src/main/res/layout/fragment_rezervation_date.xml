@@ -1,0 +1,161 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFEB3B"
+    android:padding="20dp"
+    android:layout_gravity="bottom">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:padding="5dp"
+            android:background="@drawable/dateborder"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_gunluk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:text="Günlük"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"/>
+
+            <RadioButton
+                android:id="@+id/radio_sinirsiz"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="Sınırsız"/>
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dateborder"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rezervasyon Tarihleri"
+            android:layout_marginBottom="15dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="@drawable/dateborder"
+            android:baselineAligned="false"
+            android:gravity="top"
+            android:foregroundGravity="top"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:id="@+id/tarihLayout"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:textSize="17sp"
+                    android:text="Başlangıç Tarihi" />
+
+                <EditText
+                    android:id="@+id/editTextPickupDate"
+                    android:layout_width="match_parent"
+                    android:background="@null"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:drawableTint="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:hint="Lütfen Tarih Belirleyiniz"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="5dp"
+                    android:drawableStart="@android:drawable/ic_menu_my_calendar" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/pickUplayout"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_margin="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Bitiş Tarihi" />
+
+                <EditText
+                    android:id="@+id/editTextPickupTime"
+                    android:layout_width="match_parent"
+                    android:textColorHint="@color/black"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@null"
+                    android:focusable="false"
+                    android:hint="Lütfen Tarih Belirleyiniz"
+                    android:drawableTint="@color/black"
+                    android:drawableStart="@android:drawable/ic_menu_recent_history" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Benzer yapıyı RETURN DATE ve RETURN TIME için de tekrar edin -->
+        <!-- ... -->
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnKirala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:text="Kiralamaya Devam Et"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:textColor="@color/black" />
+
+</LinearLayout>
+

@@ -1,0 +1,89 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <!-- Map Fragment -->
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- Container for Rental Status Information -->
+    <!-- This will be a container for the TextViews and the Button -->
+    <LinearLayout
+        android:id="@+id/rentalStatusContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@color/navback"
+        android:padding="6dp">
+
+        <!-- TextView for Rental Status -->
+        <TextView
+            android:id="@+id/tvRentalStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Aktif Kiralama Mevcut."
+            android:textSize="18sp"
+            android:textColor="#304FFE"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <!-- Price and KM Information -->
+        <LinearLayout
+            android:id="@+id/container2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <!-- TextView for Rental Price -->
+            <TextView
+                android:id="@+id/tvRentalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ücret: 575 ₺"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:textColor="#304FFE"
+                android:textStyle="bold"
+                android:layout_marginStart="3dp" />
+
+            <!-- TextView for Rental KM -->
+            <TextView
+                android:id="@+id/tvRentalKM"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KM: 300"
+                android:textSize="18sp"
+                android:textColor="#304FFE"
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:layout_marginStart="20dp"/>
+
+        </LinearLayout>
+
+        <!-- Button for Payment or Ending Rental -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/buttonRentFinish"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:text="Kiralamayı Bitir"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:onClick="odemeYap"
+            android:layout_gravity="center"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/allerta</item>
+        <item>@font/biryani_extralight</item>
+        <item>@font/cherry_cream_soda</item>
+        <item>@font/droid_sans</item>
+        <item>@font/happy_monkey</item>
+        <item>@font/holtwood_one_sc</item>
+        <item>@font/lemon</item>
+        <item>@font/marko_one</item>
+        <item>@font/oldenburg</item>
+        <item>@font/oxygen_mono</item>
+        <item>@font/philosopher</item>
+        <item>@font/spicy_rice</item>
+        <item>@font/vast_shadow</item>
+    </array>
+</resources>

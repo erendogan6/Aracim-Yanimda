@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavigationViewStyle">
+        <item name="itemIconTint">@color/bottom_navigation_icon_color</item>
+        <item name="itemTextColor">@color/bottom_navigation_text_color</item>
+    </style>
+</resources>

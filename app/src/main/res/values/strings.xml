@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Aracım Yanımda</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="kullan_c_resmi">Kullanıcı Resmi</string>
+    <string name="marka_logo">Marka Logo</string>
+    <string name="araba_resim">Araba Resim</string>
+    <string name="bu_arac_kirala">Bu Aracı Kirala</string>
+    <string name="yak_t_t_r">Yakıt Türü</string>
+    <string name="konum">Konum</string>
+    <string name="yak_t_durumu">Yakıt Durumu</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to login -->
+</resources>

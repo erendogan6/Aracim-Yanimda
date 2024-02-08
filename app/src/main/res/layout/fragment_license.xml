@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navback"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/spicy_rice"
+        android:text="Örnek Ehliyet Resmi"
+        android:paddingBottom="5dp"
+        android:textAlignment="center"
+        android:textColor="#283593"
+        android:textSize="28sp" />
+
+
+    <!-- Header Image or Illustration for the Driver's License -->
+    <ImageView
+        android:id="@+id/imageViewHeader"
+        android:src="@drawable/ehliyet"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="Örnek Ehliyet Resmi"/>
+
+
+
+    <!-- License Number -->
+    <EditText
+        android:id="@+id/editTextLicenseNumber"
+        android:hint="Ehliyet Numarası"
+        android:layout_width="match_parent"
+        android:textColorHint="#5F5F61"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:padding="16dp"
+        android:inputType="text"
+        android:background="@drawable/edittext_background"
+        android:textSize="18sp"/>
+
+    <!-- License Expiration Date -->
+    <EditText
+        android:id="@+id/editTextExpirationDate"
+        android:hint="Son Geçerlilik Tarihi"
+        android:textColorHint="#5F5F61"
+        android:focusable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:padding="16dp"
+        android:inputType="date"
+        android:background="@drawable/edittext_background"
+        android:textSize="18sp"/>
+
+    <CheckBox
+        android:id="@+id/checkboxClassB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="B Sınıfı Ehliyetiniz var mı?"
+        android:textSize="18sp"
+        android:paddingLeft="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:textColor="#283593"/>
+
+    <!-- Submit or Update Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonUpdateLicense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@android:style/Widget.Button"
+        android:layout_marginTop="30dp"
+        android:padding="15dp"
+        android:background="@drawable/button_background"
+        android:text="Ehliyeti Kaydet"
+        android:textColor="#ffffff"
+        android:textSize="26sp"
+        android:fontFamily="@font/marko_one"/>
+
+</LinearLayout>

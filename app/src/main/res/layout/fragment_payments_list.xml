@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navback"
+    android:orientation="vertical"
+    tools:context=".ui.PaymentsListFragment">
+
+    <TextView
+        android:id="@+id/textOdeme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:fontFamily="@font/spicy_rice"
+        android:text="Lütfen Ödeme Yöntemi Seçiniz"
+        android:textAlignment="center"
+        android:textColor="#283593"
+        android:textSize="28sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/paymentRecyclerView"
+        android:background="@color/navback"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:layout_height="0dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonPaymentAdd"
+        style="@android:style/Widget.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/marko_one"
+        android:text="Yeni Ödeme Yöntemi Ekle"
+        android:textColor="#ffffff"
+        android:textSize="26sp">
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+</LinearLayout>

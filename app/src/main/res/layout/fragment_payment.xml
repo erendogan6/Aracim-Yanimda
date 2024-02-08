@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/navback"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Kart Numarası Girişi -->
+    <EditText
+        android:id="@+id/editTextCardNumber"
+        android:hint="Kart Numarası"
+        android:text=""
+        android:layout_marginStart="15dp"
+        android:padding="16dp"
+        android:textColorHint="#5F5F61"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <!-- Son Kullanma Tarihi Girişi -->
+    <EditText
+        android:id="@+id/editTextExpirationDate"
+        android:hint="Son Kullanma Tarihi (AA/YY)"
+        android:text=""
+        android:inputType="text"
+        android:layout_marginStart="15dp"
+        android:padding="16dp"
+        android:textColorHint="#5F5F61"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editTextCVV"
+        android:hint="CVV"
+        android:text=""
+        android:layout_marginStart="15dp"
+        android:padding="16dp"
+        android:textColorHint="#5F5F61"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="16dp"
+        android:inputType="numberPassword"
+        android:maxLength="3"
+        android:textSize="20sp"
+        android:background="@drawable/edittext_background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonPaymentAdd"
+        android:onClick="odemeYap"
+        style="@android:style/Widget.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:padding="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/marko_one"
+        android:text="Ödeme Yöntemini Ekle"
+        android:textColor="#ffffff"
+        android:textSize="26sp">
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+</LinearLayout>

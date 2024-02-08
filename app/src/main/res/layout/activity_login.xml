@@ -1,0 +1,121 @@
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:padding="0dp"
+            android:layout_margin="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-35dp"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/top_background" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/spicy_rice"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:text="Her An, Her Yerde,\nAracınız Yanınızda"
+                    android:textAlignment="center"
+                    android:textColor="#FFAB00"
+                    android:textSize="36sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="280dp"
+                    android:layout_height="280dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    app:srcCompat="@drawable/background1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/spicy_rice"
+                android:text="Hesabınıza Giriş Yapabilirsiniz"
+                android:textAlignment="center"
+                android:textColor="#283593"
+                android:textSize="28sp" />
+
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:hint="E-Posta Adresinizi Giriniz"
+                android:text=""
+                android:inputType="textWebEmailAddress"
+                android:layout_marginStart="15dp"
+                android:padding="16dp"
+                android:textColorHint="#5F5F61"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="20sp"
+                android:background="@drawable/edittext_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:hint="Şifrenizi Giriniz"
+                android:text=""
+                android:layout_marginStart="15dp"
+                android:padding="16dp"
+                android:textSize="20sp"
+                android:inputType="textPassword"
+                android:textColorHint="#5F5F61"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/edittext_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonLogin"
+                android:onClick="girisYap"
+                style="@android:style/Widget.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/marko_one"
+                android:text="Giriş Yap"
+                android:textColor="#ffffff"
+                android:textSize="26sp">
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <TextView
+                android:onClick="uyeOl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:text="Hesabınız Yoksa Üye Olabilirsiniz"
+                android:textAlignment="center"
+                android:textColor="#283593"
+                android:textSize="22sp" />
+        </LinearLayout>
