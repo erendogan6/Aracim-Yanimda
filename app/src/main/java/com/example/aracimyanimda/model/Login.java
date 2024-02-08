@@ -1,12 +1,11 @@
-package com.example.aracimyanimda.api.request;
+package com.example.aracimyanimda.model;
 
-public class LoginRequest {
+public class Login {
     private final String ePosta;
     private final String sifre;
 
-    public LoginRequest(String ePosta, String sifre) {
+    public Login(String ePosta, String sifre) {
         this.ePosta = ePosta;
         this.sifre = sifre;
     }
-
 }
