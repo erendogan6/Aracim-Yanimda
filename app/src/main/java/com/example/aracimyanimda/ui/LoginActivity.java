@@ -14,7 +14,6 @@ import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
 import com.example.aracimyanimda.api.request.LoginRequest;
-import com.example.aracimyanimda.api.response.UserResponse;
 import com.example.aracimyanimda.databinding.ActivityLoginBinding;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.util.InputValidator;
@@ -28,7 +27,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-// LoginActivity sınıfı, kullanıcı giriş işlemlerini yöneten bir AppCompatActivity türevidir.
 public class LoginActivity extends AppCompatActivity {
     // Logcat'te loglama yaparken kullanılacak etiket.
     private final String TAG = "LoginActivity";
@@ -98,17 +96,16 @@ public class LoginActivity extends AppCompatActivity {
     // Kullanıcı girişi için API isteğini gönderir ve yanıtı işler.
     private void girisIstek(String email, String password) {
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
-        Call<UserResponse> call = apiService.login(new LoginRequest(email, password));
-        call.enqueue(new Callback<UserResponse>() {
+        Call<User> call = apiService.login(new LoginRequest(email, password));
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().getUserId() != null) {
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful() && response.body() != null) {
                     // Giriş başarılı olduğunda kullanıcı bilgileriyle işlemleri yapar.
-                    UserResponse userResponse = response.body();
-                    User user = new User(Integer.parseInt(userResponse.getUserId()), userResponse.getAd(), userResponse.getSoyad(), userResponse.getTelefon(), userResponse.getePosta(), userResponse.getDurum());
+                    User user = response.body();
                     UserManager.getInstance().setUser(user);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("user_mail", userResponse.getePosta());
+                    editor.putString("user_mail", user.getePosta());
                     editor.putString("user_password", password);
                     editor.apply();
                     showToast("Giriş Başarılı");
@@ -128,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
                 // Ağ hatası gibi durumlarda kullanıcıyı bilgilendirir.
                 loadLoginScreen();
                 logError(new Exception(t));

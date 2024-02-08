@@ -24,7 +24,7 @@ import retrofit2.http.Query;
 public interface UserApiService {
     // Kullanıcı girişi için istek gönderir
     @POST("User/login")
-    Call<UserResponse> login(@Body LoginRequest loginRequest);
+    Call<User> login(@Body LoginRequest loginRequest);
 
     // E-posta mevcudiyetini kontrol eder
     @POST("User/email")
