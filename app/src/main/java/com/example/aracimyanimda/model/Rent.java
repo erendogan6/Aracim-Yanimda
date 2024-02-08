@@ -1,4 +1,4 @@
-package com.example.aracimyanimda.api.response;
+package com.example.aracimyanimda.model;
 
 public class Rent {
     private Integer km;
