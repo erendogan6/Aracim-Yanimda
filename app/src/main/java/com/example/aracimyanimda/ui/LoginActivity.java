@@ -13,8 +13,8 @@ import com.example.aracimyanimda.MainActivity;
 import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.request.LoginRequest;
 import com.example.aracimyanimda.databinding.ActivityLoginBinding;
+import com.example.aracimyanimda.model.Login;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.util.InputValidator;
 import com.example.aracimyanimda.util.SharedPreferencesUtils;
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
     // Kullanıcı girişi için API isteğini gönderir ve yanıtı işler.
     private void girisIstek(String email, String password) {
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
-        Call<User> call = apiService.login(new LoginRequest(email, password));
+        Call<User> call = apiService.login(new Login(email, password));
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
