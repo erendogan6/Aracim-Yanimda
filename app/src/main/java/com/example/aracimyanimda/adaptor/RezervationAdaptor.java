@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.aracimyanimda.api.response.RezervationResponse;
 import com.example.aracimyanimda.databinding.RezervationRowBinding;
+import com.example.aracimyanimda.model.Rezervation;
 
 import java.util.ArrayList;
 
 public class RezervationAdaptor extends RecyclerView.Adapter<RezervationAdaptor.ReservationViewHolder> {
-    private final ArrayList<RezervationResponse> reservations; // Rezervasyon verilerini tutacak dizi
+    private final ArrayList<Rezervation> reservations; // Rezervasyon verilerini tutacak dizi
 
     // Kurucu method
-    public RezervationAdaptor(ArrayList<RezervationResponse> reservations) {
+    public RezervationAdaptor(ArrayList<Rezervation> reservations) {
         this.reservations = reservations; // Verileri al
     }
 
@@ -34,7 +34,7 @@ public class RezervationAdaptor extends RecyclerView.Adapter<RezervationAdaptor.
     // Veriler görünüme bağlandığında
     @Override
     public void onBindViewHolder(@NonNull ReservationViewHolder holder, int position) {
-        RezervationResponse reservation = reservations.get(position); // Belirli bir pozisyondaki rezervasyonu al
+        Rezervation reservation = reservations.get(position); // Belirli bir pozisyondaki rezervasyonu al
         holder.bind(reservation); // ViewHolder'ı belirtilen veriyle bağla
     }
 
@@ -55,7 +55,7 @@ public class RezervationAdaptor extends RecyclerView.Adapter<RezervationAdaptor.
         }
 
         // Verileri görünüme bağla
-        void bind(RezervationResponse reservation) {
+        void bind(Rezervation reservation) {
             binding.tvStartDate.setText(reservation.getBaslangicTarihi()); // Başlangıç tarihini görünüme ata
             binding.tvEndDate.setText(reservation.getBitisTarihi()); // Bitiş tarihini görünüme ata
             String fiyat = String.valueOf(reservation.getMiktar()); // Fiyatı stringe çevir

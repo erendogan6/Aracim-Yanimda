@@ -20,8 +20,8 @@ import androidx.fragment.app.DialogFragment;
 import com.example.aracimyanimda.MainActivity;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.request.RezervationRequest;
 import com.example.aracimyanimda.databinding.FragmentRezervationDetailsBinding;
+import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.model.Vehicle;
 import com.example.aracimyanimda.util.UserManager;
@@ -149,7 +149,7 @@ public class RezervationDetailsFragment extends DialogFragment {
     private void completeRezervation() {
         Retrofit retrofit = RetrofitClientInstance.getRetrofitInstance(); // Retrofit örneğini al
         UserApiService service = retrofit.create(UserApiService.class); // Kullanıcı API hizmetini al
-        RezervationRequest newReservation = new RezervationRequest( // Yeni bir rezervasyon oluştur
+        Rezervation newReservation = new Rezervation( // Yeni bir rezervasyon oluştur
                 Integer.parseInt(vehicleId), // Araç kimliğini ata
                 userId, // Kullanıcı kimliğini ata
                 startDate, // Başlangıç tarihini ata

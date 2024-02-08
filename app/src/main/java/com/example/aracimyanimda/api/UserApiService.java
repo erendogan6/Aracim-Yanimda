@@ -5,10 +5,9 @@ import com.example.aracimyanimda.api.request.LoginRequest;
 import com.example.aracimyanimda.api.request.PaymentCreateRequest;
 import com.example.aracimyanimda.api.request.RegisterFirstRequest;
 import com.example.aracimyanimda.api.request.RegisterRequest;
-import com.example.aracimyanimda.api.request.RezervationRequest;
 import com.example.aracimyanimda.api.response.PaymentResponse;
 import com.example.aracimyanimda.api.response.RentResponse;
-import com.example.aracimyanimda.api.response.RezervationResponse;
+import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.model.Vehicle;
 
@@ -40,7 +39,7 @@ public interface UserApiService {
 
     // Rezervasyon oluşturur
     @POST("Rezervasyon/create")
-    Call<Void> createReservation(@Query("paymentMethodId") int paymentMethodId, @Body RezervationRequest requestData);
+    Call<Void> createReservation(@Query("paymentMethodId") int paymentMethodId, @Body Rezervation requestData);
 
     // Ödeme yöntemi oluşturur
     @POST("Payment/paymentmethod/create")
@@ -72,5 +71,5 @@ public interface UserApiService {
 
     // Kullanıcının rezervasyonlarını getirir
     @GET("User/users/rezervasyon")
-    Call<List<RezervationResponse>> getRezervations(@Query("Id") int Id);
+    Call<List<Rezervation>> getRezervations(@Query("Id") int Id);
 }
