@@ -1,10 +1,10 @@
 package com.example.aracimyanimda.api;
 
-import com.example.aracimyanimda.api.request.RegisterFirstRequest;
-import com.example.aracimyanimda.api.request.RegisterRequest;
 import com.example.aracimyanimda.model.License;
 import com.example.aracimyanimda.model.Login;
 import com.example.aracimyanimda.model.Payment;
+import com.example.aracimyanimda.model.Register;
+import com.example.aracimyanimda.model.RegisterControl;
 import com.example.aracimyanimda.model.Rent;
 import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
@@ -26,11 +26,11 @@ public interface UserApiService {
 
     // E-posta mevcudiyetini kontrol eder
     @POST("User/email")
-    Call<Boolean> checkEmail(@Body RegisterFirstRequest request);
+    Call<Boolean> checkEmail(@Body RegisterControl request);
 
     // Yeni kullanıcı kaydı oluşturur
     @POST("User/register")
-    Call<Void> register(@Body RegisterRequest request);
+    Call<Void> register(@Body Register request);
 
     // Araç listesini getirir
     @GET("Vehicle/vehicles")

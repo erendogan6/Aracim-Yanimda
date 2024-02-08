@@ -17,7 +17,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.aracimyanimda.MainActivity;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
 import com.example.aracimyanimda.databinding.FragmentRezervationDetailsBinding;

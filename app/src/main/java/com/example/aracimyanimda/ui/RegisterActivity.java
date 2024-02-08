@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.request.RegisterFirstRequest;
 import com.example.aracimyanimda.databinding.ActivityRegisterBinding;
+import com.example.aracimyanimda.model.RegisterControl;
 import com.example.aracimyanimda.util.InputValidator;
 
 import retrofit2.Call;
@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         // E-posta adresinin zaten kullanılıp kullanılmadığını kontrol eden API çağrısı.
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
-        Call<Boolean> checkEmailCall = apiService.checkEmail(new RegisterFirstRequest(email));
+        Call<Boolean> checkEmailCall = apiService.checkEmail(new RegisterControl(email));
         String finalEmail = email;
         String finalPassword = password;
         checkEmailCall.enqueue(new Callback<Boolean>() {

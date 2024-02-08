@@ -1,4 +1,4 @@
-package com.example.aracimyanimda;
+package com.example.aracimyanimda.ui;
 
 import android.os.Bundle;
 
@@ -8,6 +8,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

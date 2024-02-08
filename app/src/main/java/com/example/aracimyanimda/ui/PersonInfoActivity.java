@@ -14,8 +14,8 @@ import androidx.core.net.ParseException;
 
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.request.RegisterRequest;
 import com.example.aracimyanimda.databinding.ActivityPersonInfoBinding;
+import com.example.aracimyanimda.model.Register;
 import com.example.aracimyanimda.util.InputValidator;
 
 import java.util.Date;
@@ -99,7 +99,7 @@ public class PersonInfoActivity extends AppCompatActivity {
     // Kullanıcının kayıt işlemini gerçekleştiren metod.
     private void performRegistration(String date){
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
-        RegisterRequest request = new RegisterRequest(email, password, firstName, lastName, phoneNumber, sozlesme);
+        Register request = new Register(email, password, firstName, lastName, phoneNumber, sozlesme);
         Call<Void> call = apiService.register(request);
         call.enqueue(new Callback<Void>() {
             @Override
