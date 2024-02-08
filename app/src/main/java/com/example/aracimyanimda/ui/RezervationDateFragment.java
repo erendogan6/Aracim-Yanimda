@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.databinding.FragmentRezervationDateBinding;
+import com.example.aracimyanimda.model.Vehicle;
 import com.example.aracimyanimda.viewmodel.SharedViewModel;
 
 public class RezervationDateFragment extends DialogFragment {
@@ -109,14 +110,15 @@ public class RezervationDateFragment extends DialogFragment {
     // Bir sonraki fragment için veri hazırla
     private void prepareBundleForNextFragment(Bundle bundle) {
         String rentalType = binding.radioGunluk.isChecked() ? DAILY_RENTAL : UNLIMITED_RENTAL; // Kiralama tipini belirle
-        bundle.putString("rentalType", rentalType); // Kiralama tipini diziye ekle
+        Vehicle vehicle = bundle.getParcelable("car");
+        vehicle.setKiralamaTipi(rentalType); // Kiralama tipini bundle'a ekle
         if (startDateCalendar != null) {
-            bundle.putLong("startDate", startDateCalendar.getTimeInMillis()); // Başlangıç tarihini diziye ekle
+            vehicle.setKiralamaBaslangic(startDateCalendar.getTimeInMillis());// Başlangıç tarihini bundle'a ekle
         }
         if (endDateCalendar != null && "Günlük".equals(rentalType)) {
-            bundle.putLong("endDate", endDateCalendar.getTimeInMillis()); // Bitiş tarihini günlük kiralama ise diziye ekle
+            vehicle.setKiralamaBitis(endDateCalendar.getTimeInMillis()); // Bitiş tarihini günlük kiralama ise bundle'a ekle
         } else if ("Sınırsız".equals(rentalType)) {
-            bundle.putLong("endDate", 0L); // Bitiş tarihi sınırsız kiralama ise sıfır ekle
+            vehicle.setKiralamaBitis(0L); // Bitiş tarihi sınırsız kiralama ise sıfır ekle
         }
     }
 

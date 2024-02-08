@@ -28,8 +28,8 @@ import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
 import com.example.aracimyanimda.api.response.RentResponse;
-import com.example.aracimyanimda.api.response.VehicleResponse;
 import com.example.aracimyanimda.databinding.FragmentMapsBinding;
+import com.example.aracimyanimda.model.Vehicle;
 import com.example.aracimyanimda.util.UserManager;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -65,7 +65,7 @@ public class MapsFragment extends Fragment {
     private final String ERROR_GETTING_ADDRESS = "Adres alınırken hata oluştu"; // Adres alınırken hata oluştu hatası mesajı
     private final String PERMISSION_DENIED_MESSAGE = "Uygulamayı Kullanabilmek İçin Konum İzni Gereklidir"; // Konum izni reddedildi mesajı
     private final String ERROR_MESSAGE_PREFIX = "Bir hata oluştu: "; // Genel hata mesajı öneki
-    private final Map<Marker, VehicleResponse> vehicleMarkerMap = new HashMap<>(); // Araç simgesi ve yanıt eşlemesi için bir harita
+    private final Map<Marker, Vehicle> vehicleMarkerMap = new HashMap<>(); // Araç simgesi ve yanıt eşlemesi için bir harita
     private final Handler handler = new Handler(); // Arka planda çalışan iş parçacığı için bir işleyici
     // Diğer değişkenler
     private GoogleMap mMap; // Google Harita nesnesi
@@ -102,7 +102,7 @@ public class MapsFragment extends Fragment {
     // Araç simgeleri üzerine tıklama olayını işleyen metot
     private void registerMarkerClickHandler() {
         mMap.setOnMarkerClickListener(marker -> {
-            VehicleResponse selectedVehicle = vehicleMarkerMap.get(marker);
+            Vehicle selectedVehicle = vehicleMarkerMap.get(marker);
             if (selectedVehicle != null) {
                 LatLng vehicleLocation = marker.getPosition();
                 selectedVehicle.setAdres(getAddressFromLocation(vehicleLocation.latitude, vehicleLocation.longitude));
@@ -113,7 +113,7 @@ public class MapsFragment extends Fragment {
     }
 
     // Araç detayları diyalogunu açan metot
-    private void openVehicleDetailsDialog(VehicleResponse vehicle) {
+    private void openVehicleDetailsDialog(Vehicle vehicle) {
         VehicleFragment dialogFragment = new VehicleFragment();
         Bundle bundle = createVehicleDetailsBundle(vehicle);
         dialogFragment.setArguments(bundle);
@@ -121,18 +121,9 @@ public class MapsFragment extends Fragment {
     }
 
     // Araç detayları için paket oluşturan metot
-    private Bundle createVehicleDetailsBundle(VehicleResponse selectedVehicle) {
+    private Bundle createVehicleDetailsBundle(Vehicle selectedVehicle) {
         Bundle bundle = new Bundle();
-        bundle.putString("vehicleId", selectedVehicle.getVehicleId());
-        bundle.putString("marka", selectedVehicle.getMarka());
-        bundle.putString("model", selectedVehicle.getModel());
-        bundle.putString("yil", selectedVehicle.getYil());
-        bundle.putString("plaka", selectedVehicle.getPlaka());
-        bundle.putString("yakitTipi", selectedVehicle.getYakitTipi());
-        bundle.putString("yakitDurumu", selectedVehicle.getYakitDurumu());
-        bundle.putString("fiyatGunluk", selectedVehicle.getFiyatGunluk());
-        bundle.putString("fiyatDakika", selectedVehicle.getFiyatDakika());
-        bundle.putString("adres", selectedVehicle.getAdres());
+        bundle.putParcelable("car",selectedVehicle);
         return bundle;
     }
 
@@ -238,14 +229,14 @@ public class MapsFragment extends Fragment {
     // Araçları yükle
     private void loadVehicles() {
         // Arayüzden ayrı iş parçacığında araçları yükle
-        apiService.vehicleGet().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<List<VehicleResponse>>() {
+        apiService.vehicleGet().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<List<Vehicle>>() {
             @Override
             public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
                 // Abonelik başladığında yapılacak işlemler
             }
 
             @Override
-            public void onNext(@io.reactivex.rxjava3.annotations.NonNull List<VehicleResponse> vehicleResponses) {
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull List<Vehicle> vehicleResponses) {
                 // Veriler alındığında yapılacak işlemler
                 displayVehiclesOnMap(vehicleResponses); // Harita üzerinde araçları göster
             }
@@ -264,8 +255,8 @@ public class MapsFragment extends Fragment {
     }
 
     // Haritada araçları göster
-    private void displayVehiclesOnMap(List<VehicleResponse> vehicles) {
-        for (VehicleResponse vehicle : vehicles) {
+    private void displayVehiclesOnMap(List<Vehicle> vehicles) {
+        for (Vehicle vehicle : vehicles) {
             // "Bosta" durumundaki araçları işle
             if ("Bosta".equals(vehicle.getDurum())) {
                 LatLng vehicleLocation = new LatLng(Double.parseDouble(vehicle.getLatitude()), Double.parseDouble(vehicle.getLongitude()));
@@ -277,7 +268,7 @@ public class MapsFragment extends Fragment {
     }
 
     // Araç için işaretçi seçenekleri oluştur
-    private MarkerOptions createMarkerForVehicle(VehicleResponse vehicle, LatLng location) {
+    private MarkerOptions createMarkerForVehicle(Vehicle vehicle, LatLng location) {
         return new MarkerOptions().position(location).title(vehicle.getMarka() + " " + vehicle.getModel()).icon(resizeMapIcons()); // Araç simgesini yeniden boyutlandır ve ayarla
     }
 

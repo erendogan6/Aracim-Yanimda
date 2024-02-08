@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import com.example.aracimyanimda.databinding.FragmentVecihleBinding;
+import com.example.aracimyanimda.model.Vehicle;
+
 public class VehicleFragment extends DialogFragment {
     private FragmentVecihleBinding binding;
 
@@ -30,18 +32,19 @@ public class VehicleFragment extends DialogFragment {
     // Veri paketinden araç verilerini görünüme yükle
     private void setVehicleDataFromBundle(Bundle bundle) {
         // Araç verilerini görünüme yükle
-        binding.vehicleMarka.setText(bundle.getString("marka"));
-        binding.vehicleModel.setText(bundle.getString("model"));
-        binding.vehicleYil.setText(bundle.getString("yil"));
-        binding.vehicleYakitTipi.setText(bundle.getString("yakitTipi"));
-        binding.vehicleYakitSeviyesi.setText(bundle.getString("yakitDurumu"));
-        binding.vehicleGunlukFiyat.setText("Günlük: " + getIntFromString(bundle.getString("fiyatGunluk")) + "₺");
-        binding.vehicleDakikaFiyat.setText("Saatlik: " + getIntFromString(bundle.getString("fiyatDakika")) + "₺");
-        binding.vehicleAdres.setText(bundle.getString("adres"));
+        Vehicle vehicle = (Vehicle) bundle.getParcelable("car");
+        binding.vehicleMarka.setText(vehicle.getMarka());
+        binding.vehicleModel.setText(vehicle.getModel());
+        binding.vehicleYil.setText(vehicle.getYil());
+        binding.vehicleYakitTipi.setText(vehicle.getYakitTipi());
+        binding.vehicleYakitSeviyesi.setText(vehicle.getYakitDurumu());
+        binding.vehicleGunlukFiyat.setText("Günlük: " + getIntFromString(vehicle.getFiyatGunluk()) + "₺");
+        binding.vehicleDakikaFiyat.setText("Saatlik: " + getIntFromString(vehicle.getFiyatDakika()) + "₺");
+        binding.vehicleAdres.setText(vehicle.getAdres());
 
         // Araç logosunu ve resmini görünüme yükle
-        loadDrawableToImageView("cropped_" + bundle.getString("marka").toLowerCase() + "_logo", binding.vehicleLogo);
-        loadDrawableToImageView("cropped_" + bundle.getString("marka").toLowerCase() + "_car", binding.vehicleResim);
+        loadDrawableToImageView("cropped_" + vehicle.getMarka().toLowerCase() + "_logo", binding.vehicleLogo);
+        loadDrawableToImageView("cropped_" + vehicle.getMarka().toLowerCase() + "_car", binding.vehicleResim);
     }
 
     // Drawable kaynağını ImageView'e yükle

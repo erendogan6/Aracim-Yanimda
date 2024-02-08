@@ -1,15 +1,16 @@
 package com.example.aracimyanimda.api;
+
 import com.example.aracimyanimda.api.request.LicenseRequest;
 import com.example.aracimyanimda.api.request.LoginRequest;
 import com.example.aracimyanimda.api.request.PaymentCreateRequest;
 import com.example.aracimyanimda.api.request.RegisterFirstRequest;
 import com.example.aracimyanimda.api.request.RegisterRequest;
 import com.example.aracimyanimda.api.request.RezervationRequest;
-import com.example.aracimyanimda.api.response.RentResponse;
 import com.example.aracimyanimda.api.response.PaymentResponse;
+import com.example.aracimyanimda.api.response.RentResponse;
 import com.example.aracimyanimda.api.response.RezervationResponse;
-import com.example.aracimyanimda.api.response.UserResponse;
-import com.example.aracimyanimda.api.response.VehicleResponse;
+import com.example.aracimyanimda.model.User;
+import com.example.aracimyanimda.model.Vehicle;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public interface UserApiService {
 
     // Araç listesini getirir
     @GET("Vehicle/vehicles")
-    Observable<List<VehicleResponse>> vehicleGet();
+    Observable<List<Vehicle>> vehicleGet();
 
     // Rezervasyon oluşturur
     @POST("Rezervasyon/create")

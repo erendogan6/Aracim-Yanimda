@@ -3,13 +3,6 @@ package com.example.aracimyanimda.ui;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,12 +12,18 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
+
 import com.example.aracimyanimda.MainActivity;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
 import com.example.aracimyanimda.api.request.RezervationRequest;
 import com.example.aracimyanimda.databinding.FragmentRezervationDetailsBinding;
 import com.example.aracimyanimda.model.User;
+import com.example.aracimyanimda.model.Vehicle;
 import com.example.aracimyanimda.util.UserManager;
 
 import java.util.Date;
@@ -118,31 +117,31 @@ public class RezervationDetailsFragment extends DialogFragment {
     // Argümanlardan verileri al ve görsel öğelere yerleştir
     private void setDataFromBundle(Bundle bundle) {
         if (bundle != null) {
-            vehicleId = bundle.getString("vehicleId", "1"); // Araç kimliğini al, yoksa varsayılan değeri kullan
-            String brand = bundle.getString("marka", "N/A"); // Markayı al, yoksa "N/A" kullan
-            String model = bundle.getString("model", "N/A"); // Modeli al, yoksa "N/A" kullan
-            String year = bundle.getString("yil", "N/A"); // Yılı al, yoksa "N/A" kullan
-            String address = bundle.getString("adres", "N/A"); // Adresi al, yoksa "N/A" kullan
-            String cardNumber = bundle.getString("cardNumber", "0"); // Kart numarasını al, yoksa "0" kullan
-            String fuelType = bundle.getString("yakitTipi", "N/A"); // Yakıt türünü al, yoksa "N/A" kullan
-            long startDateMillis = bundle.getLong("startDate", 0L); // Başlangıç tarihini al, yoksa 0 kullan
-            long endDateMillis = bundle.getLong("endDate", 0L); // Bitiş tarihini al, yoksa 0 kullan
+            Vehicle vehicle = bundle.getParcelable("car");
+            vehicleId = vehicle.getVehicleId(); // Araç kimliğini al, yoksa varsayılan değeri kullan
+            String marka = vehicle.getMarka(); // Markayı al, yoksa "N/A" kullan
+            String model = vehicle.getModel(); // Modeli al, yoksa "N/A" kullan
+            String adres = vehicle.getAdres(); // Adresi al, yoksa "N/A" kullan
+            String yakitTipi = vehicle.getYakitTipi(); // Yakıt türünü al, yoksa "N/A" kullan
+            long kiralamaBaslangicMS = vehicle.getKiralamaBaslangic(); // Başlangıç tarihini al, yoksa 0 kullan
+            long kiralamaBitisMS = vehicle.getKiralamaBitis(); // Bitiş tarihini al, yoksa 0 kullan
+            String kartNumarasi = bundle.getString("cardNumber", "0"); // Kart numarasını al, yoksa "0" kullan
             kartId = bundle.getInt("cardId", 0); // Kart kimliğini al, yoksa 0 kullan
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()); // Tarih formatlayıcı oluştur
-            startDate = startDateMillis == 0L ? "" : formatter.format(new Date(startDateMillis)); // Başlangıç tarihini biçimlendir
-            endDate = endDateMillis == 0L ? "" : formatter.format(new Date(endDateMillis)); // Bitiş tarihini biçimlendir
+            startDate = kiralamaBaslangicMS == 0L ? "" : formatter.format(new Date(kiralamaBaslangicMS)); // Başlangıç tarihini biçimlendir
+            endDate = kiralamaBitisMS == 0L ? "" : formatter.format(new Date(kiralamaBitisMS)); // Bitiş tarihini biçimlendir
 
-            binding.vehicleMarka.setText(brand + " " + model); // Araç marka ve modelini görsel öğeye yerleştir
-            binding.tvCarYear.setText(year); // Araç yılını görsel öğeye yerleştir
-            binding.tvCarAddress.setText(address); // Araç adresini görsel öğeye yerleştir
-            binding.tvCarFuelType.setText(fuelType); // Araç yakıt türünü görsel öğeye yerleştir
+            binding.vehicleMarka.setText(marka + " " + model); // Araç marka ve modelini görsel öğeye yerleştir
+            binding.tvCarYear.setText(model); // Araç yılını görsel öğeye yerleştir
+            binding.tvCarAddress.setText(adres); // Araç adresini görsel öğeye yerleştir
+            binding.tvCarFuelType.setText(yakitTipi); // Araç yakıt türünü görsel öğeye yerleştir
             binding.tvStartDate.setText(startDate); // Başlangıç tarihini görsel öğeye yerleştir
             binding.tvEndDate.setText(endDate); // Bitiş tarihini görsel öğeye yerleştir
-            binding.tvCardNumber.setText(maskCardNumber(cardNumber)); // Kart numarasını görsel öğeye yerleştir
+            binding.tvCardNumber.setText(maskCardNumber(kartNumarasi)); // Kart numarasını görsel öğeye yerleştir
 
-            loadDrawableToImageView("cropped_" + brand.toLowerCase() + "_logo", binding.vehicleLogo); // Araç logosunu yükle
-            loadDrawableToImageView("cropped_" + brand.toLowerCase() + "_car", binding.vehicleResim); // Araç resmini yükle
+            loadDrawableToImageView("cropped_" + marka.toLowerCase() + "_logo", binding.vehicleLogo); // Araç logosunu yükle
+            loadDrawableToImageView("cropped_" + marka.toLowerCase() + "_car", binding.vehicleResim); // Araç resmini yükle
         }
     }
 
