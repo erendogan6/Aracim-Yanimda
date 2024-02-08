@@ -19,8 +19,8 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.request.LicenseRequest;
 import com.example.aracimyanimda.databinding.FragmentLicenseBinding;
+import com.example.aracimyanimda.model.License;
 import com.example.aracimyanimda.util.UserManager;
 
 import java.util.Locale;
@@ -109,9 +109,9 @@ public class LicenseFragment extends DialogFragment {
     // API aracılığı ile lisans bilgilerini getirme.
     private void fetchLicenseInfo(int userId) {
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
-        apiService.getLicense(userId).enqueue(new Callback<LicenseRequest>() {
+        apiService.getLicense(userId).enqueue(new Callback<License>() {
             @Override
-            public void onResponse(Call<LicenseRequest> call, Response<LicenseRequest> response) {
+            public void onResponse(Call<License> call, Response<License> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     // Gelen lisans bilgileri ile UI güncelle.
                     updateUIWithLicenseInfo(response.body());
@@ -123,7 +123,7 @@ public class LicenseFragment extends DialogFragment {
             }
 
             @Override
-            public void onFailure(Call<LicenseRequest> call, Throwable t) {
+            public void onFailure(Call<License> call, Throwable t) {
                 // Hata loglama.
                 logError(new Exception(t));
             }
@@ -131,7 +131,7 @@ public class LicenseFragment extends DialogFragment {
     }
 
     // Gelen lisans bilgileri ile UI güncelleme.
-    private void updateUIWithLicenseInfo(LicenseRequest license) {
+    private void updateUIWithLicenseInfo(License license) {
         // Güncelle butonunu gizle.
         binding.buttonUpdateLicense.setVisibility(View.GONE);
         // Gelen bilgileri ilgili alanlara yerleştir.
@@ -159,9 +159,9 @@ public class LicenseFragment extends DialogFragment {
         }
 
         // Lisans bilgileri ile yeni bir istek oluştur.
-        LicenseRequest licenseRequest = new LicenseRequest("B", licenseNumber, expirationDate, userId);
+        License license = new License("B", licenseNumber, expirationDate, userId);
         UserApiService apiService = RetrofitClientInstance.getRetrofitInstance().create(UserApiService.class);
-        Call<Void> call = apiService.createLicense(licenseRequest);
+        Call<Void> call = apiService.createLicense(license);
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {

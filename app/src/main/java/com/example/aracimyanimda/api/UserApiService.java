@@ -1,11 +1,11 @@
 package com.example.aracimyanimda.api;
 
-import com.example.aracimyanimda.api.request.LicenseRequest;
-import com.example.aracimyanimda.api.request.LoginRequest;
 import com.example.aracimyanimda.api.request.RegisterFirstRequest;
 import com.example.aracimyanimda.api.request.RegisterRequest;
-import com.example.aracimyanimda.api.response.Rent;
+import com.example.aracimyanimda.model.License;
+import com.example.aracimyanimda.model.Login;
 import com.example.aracimyanimda.model.Payment;
+import com.example.aracimyanimda.model.Rent;
 import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
 import com.example.aracimyanimda.model.Vehicle;
@@ -22,7 +22,7 @@ import retrofit2.http.Query;
 public interface UserApiService {
     // Kullanıcı girişi için istek gönderir
     @POST("User/login")
-    Call<User> login(@Body LoginRequest loginRequest);
+    Call<User> login(@Body Login login);
 
     // E-posta mevcudiyetini kontrol eder
     @POST("User/email")
@@ -62,11 +62,11 @@ public interface UserApiService {
 
     // Ehliyet bilgisini kaydeder
     @POST("User/license/create")
-    Call<Void> createLicense(@Body LicenseRequest licenseRequest);
+    Call<Void> createLicense(@Body License license);
 
     // Kullanıcının ehliyet bilgisini getirir
     @GET("User/license")
-    Call<LicenseRequest> getLicense(@Query("user_id") int user_id);
+    Call<License> getLicense(@Query("user_id") int user_id);
 
     // Kullanıcının rezervasyonlarını getirir
     @GET("User/users/rezervasyon")
