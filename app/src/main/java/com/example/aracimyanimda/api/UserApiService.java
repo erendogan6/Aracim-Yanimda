@@ -4,7 +4,7 @@ import com.example.aracimyanimda.api.request.LicenseRequest;
 import com.example.aracimyanimda.api.request.LoginRequest;
 import com.example.aracimyanimda.api.request.RegisterFirstRequest;
 import com.example.aracimyanimda.api.request.RegisterRequest;
-import com.example.aracimyanimda.api.response.RentResponse;
+import com.example.aracimyanimda.api.response.Rent;
 import com.example.aracimyanimda.model.Payment;
 import com.example.aracimyanimda.model.Rezervation;
 import com.example.aracimyanimda.model.User;
@@ -54,7 +54,7 @@ public interface UserApiService {
 
     // Kullanıcının kiralama bilgisini kontrol eder
     @GET("Payment/bilgi")
-    Observable<Response<RentResponse>> checkRent(@Query("rezervation_id") int rezervation_id);
+    Observable<Response<Rent>> checkRent(@Query("rezervation_id") int rezervation_id);
 
     // Kullanıcının kiralama işlemini tamamlar
     @POST("Payment/tamamla")

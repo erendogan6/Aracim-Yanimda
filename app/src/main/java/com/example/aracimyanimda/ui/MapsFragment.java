@@ -27,7 +27,7 @@ import androidx.fragment.app.Fragment;
 import com.example.aracimyanimda.R;
 import com.example.aracimyanimda.api.RetrofitClientInstance;
 import com.example.aracimyanimda.api.UserApiService;
-import com.example.aracimyanimda.api.response.RentResponse;
+import com.example.aracimyanimda.api.response.Rent;
 import com.example.aracimyanimda.databinding.FragmentMapsBinding;
 import com.example.aracimyanimda.model.Vehicle;
 import com.example.aracimyanimda.util.UserManager;
@@ -54,10 +54,7 @@ import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Response;
-
-// Harita fragmenti sınıfı
 public class MapsFragment extends Fragment {
-    // Sabitler
     private final String TAG = "MapsFragment"; // Log etiketi
     private final float MAP_ZOOM = 10.0f; // Harita yakınlaştırma düzeyi
     private final long REFRESH_INTERVAL_MS = 20000L; // Harita ve durumun yenilenme aralığı (milisaniye cinsinden)
@@ -67,7 +64,6 @@ public class MapsFragment extends Fragment {
     private final String ERROR_MESSAGE_PREFIX = "Bir hata oluştu: "; // Genel hata mesajı öneki
     private final Map<Marker, Vehicle> vehicleMarkerMap = new HashMap<>(); // Araç simgesi ve yanıt eşlemesi için bir harita
     private final Handler handler = new Handler(); // Arka planda çalışan iş parçacığı için bir işleyici
-    // Diğer değişkenler
     private GoogleMap mMap; // Google Harita nesnesi
     private ActivityResultLauncher<String> requestPermissionLauncher; // Konum izni isteği başlatıcısı
     private UserApiService apiService; // Kullanıcı API hizmeti
@@ -359,7 +355,7 @@ public class MapsFragment extends Fragment {
     }
 
     // Kiralama arayüzünü güncelle
-    private void updateRentalUI(boolean hasActiveRental, RentResponse rentResponse) {
+    private void updateRentalUI(boolean hasActiveRental, Rent rentResponse) {
         int visibility = hasActiveRental && rentResponse != null ? View.VISIBLE : View.GONE; // Görünürlüğü belirle
         binding.rentalStatusContainer.setVisibility(visibility); // Kiralama durumu konteynırının görünürlüğünü ayarla
         binding.container2.setVisibility(visibility); // Konteynır 2'nin görünürlüğünü ayarla
@@ -413,14 +409,14 @@ public class MapsFragment extends Fragment {
 
     // Kiralama detaylarını getir
     private void fetchRentDetails(Integer reservationId) {
-        apiService.checkRent(reservationId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<RentResponse>>() {
+        apiService.checkRent(reservationId).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Response<Rent>>() {
             @Override
             public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
                 // Abonelik başladığında yapılacak işlemler
             }
 
             @Override
-            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Response<RentResponse> response) {
+            public void onNext(@io.reactivex.rxjava3.annotations.NonNull Response<Rent> response) {
                 // Veri alındığında yapılacak işlemler
                 if (response.isSuccessful()) {
                     updateRentalUI(true, response.body()); // Kiralama arayüzünü güncelle
