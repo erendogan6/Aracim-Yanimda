@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.aracimyanimda"
+    namespace = "com.erendogan6.aracimyanimda"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.aracimyanimda"
+        applicationId = "com.erendogan6.aracimyanimda"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

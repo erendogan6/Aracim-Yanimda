@@ -6,17 +6,17 @@
     app:startDestination="@id/navigation_maps">
     <fragment
         android:id="@+id/navigation_maps"
-        android:name="com.example.aracimyanimda.ui.fragment.MapsFragment"
+        android:name="com.erendogan6.aracimyanimda.ui.fragment.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/navigation_rezervations"
-        android:name="com.example.aracimyanimda.ui.fragment.RezervationsFragment"
+        android:name="com.erendogan6.aracimyanimda.ui.fragment.RezervationsFragment"
         android:label="fragment_rezervations"
         tools:layout="@layout/fragment_rezervations" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.aracimyanimda.ui.fragment.ProfileFragment"
+        android:name="com.erendogan6.aracimyanimda.ui.fragment.ProfileFragment"
         android:label="fragment_profil"
         tools:layout="@layout/fragment_profil" />
 </navigation>
