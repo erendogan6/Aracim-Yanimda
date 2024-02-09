@@ -35,7 +35,7 @@ public class VehicleFragment extends DialogFragment {
     // Veri paketinden araç verilerini görünüme yükle
     private void setVehicleDataFromBundle(Bundle bundle) {
         // Araç verilerini görünüme yükle
-        Vehicle vehicle = (Vehicle) bundle.getParcelable("car");
+        Vehicle vehicle = bundle.getParcelable("car");
         binding.vehicleMarka.setText(vehicle.getMarka());
         binding.vehicleModel.setText(vehicle.getModel());
         binding.vehicleYil.setText(vehicle.getYil());
