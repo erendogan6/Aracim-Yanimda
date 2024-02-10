@@ -32,6 +32,7 @@
 - UI/UX Design Principles
 - Fragment Management
 - View Binding
+- Composite Disposable
 
 ## Test Edilen Sürümler
 - Android 9.0
