@@ -51,10 +51,12 @@ import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import retrofit2.Response;
 public class MapsFragment extends Fragment {
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     private final String TAG = "MapsFragment"; // Log etiketi
     private final float MAP_ZOOM = 10.0f; // Harita yakınlaştırma düzeyi
     private final long REFRESH_INTERVAL_MS = 20000L; // Harita ve durumun yenilenme aralığı (milisaniye cinsinden)
@@ -93,6 +95,7 @@ public class MapsFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         handler.removeCallbacks(runnableCode); // İş parçacığını durdur
+        compositeDisposable.clear(); // Tüm abonelikleri iptal et
     }
 
     // Araç simgeleri üzerine tıklama olayını işleyen metot
@@ -224,31 +227,35 @@ public class MapsFragment extends Fragment {
 
     // Araçları yükle
     private void loadVehicles() {
-        // Arayüzden ayrı iş parçacığında araçları yükle
-        apiService.vehicleGet().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<List<Vehicle>>() {
-            @Override
-            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
-                // Abonelik başladığında yapılacak işlemler
-            }
+        apiService.vehicleGet()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<List<Vehicle>>() {
+                    @Override
+                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
+                        // Abonelik başladığında Disposable'ı CompositeDisposable'a ekleyin
+                        compositeDisposable.add(d);
+                    }
 
-            @Override
-            public void onNext(@io.reactivex.rxjava3.annotations.NonNull List<Vehicle> vehicleResponses) {
-                // Veriler alındığında yapılacak işlemler
-                displayVehiclesOnMap(vehicleResponses); // Harita üzerinde araçları göster
-            }
+                    @Override
+                    public void onNext(@io.reactivex.rxjava3.annotations.NonNull List<Vehicle> vehicleResponses) {
+                        // Veriler alındığında yapılacak işlemler
+                        displayVehiclesOnMap(vehicleResponses); // Harita üzerinde araçları göster
+                    }
 
-            @Override
-            public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
-                // Hata oluştuğunda yapılacak işlemler
-                logError(new Exception(e)); // Hata günlüğüne kaydet
-            }
+                    @Override
+                    public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {
+                        // Hata oluştuğunda yapılacak işlemler
+                        logError(new Exception(e)); // Hata günlüğüne kaydet
+                    }
 
-            @Override
-            public void onComplete() {
-                // Gözlemleme tamamlandığında yapılacak işlemler
-            }
-        });
+                    @Override
+                    public void onComplete() {
+                        // Gözlemleme tamamlandığında yapılacak işlemler
+                    }
+                });
     }
+
 
     // Haritada araçları göster
     private void displayVehiclesOnMap(List<Vehicle> vehicles) {
@@ -314,6 +321,7 @@ public class MapsFragment extends Fragment {
             @Override
             public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
                 // Abonelik başladığında yapılacak işlemler
+                compositeDisposable.add(d);
             }
 
             @Override
@@ -381,6 +389,7 @@ public class MapsFragment extends Fragment {
             @Override
             public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
                 // Abonelik başladığında yapılacak işlemler
+                compositeDisposable.add(d);
             }
 
             @Override
@@ -413,6 +422,7 @@ public class MapsFragment extends Fragment {
             @Override
             public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Disposable d) {
                 // Abonelik başladığında yapılacak işlemler
+                compositeDisposable.add(d);
             }
 
             @Override
