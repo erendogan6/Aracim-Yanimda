@@ -2,9 +2,17 @@
 <img src="https://i.hizliresim.com/i2pqliw.png" alt0="Logo" width="170" height="170">
 
 ## Proje Hakkında
-**"Aracım Yanımda"**, Android cihazlar için Java ile geliştirilmiş bir araç kiralama uygulamasıdır. Kullanıcılar, harita üzerinden mevcut konumlarına yakın kiralık araçları kolayca bulabilir, rezervasyon yapabilir ve mevcut rezervasyonlarını yönetebilirler. 
+**"Aracım Yanımda"**, kullanıcıların Android cihazları üzerinden kolaylıkla erişebildikleri ve mevcut konumlarına yakın kiralık araçları bulmalarını, rezervasyon yapmalarını ve mevcut rezervasyonlarını yönetmelerini sağlayan, Java ile geliştirilmiş kapsamlı bir araç kiralama uygulamasıdır. Uygulama, araç kiralama sürecini kullanıcı için mümkün olan en sorunsuz ve etkili hale getirmek için tasarlanmıştır.
+Kullanıcıların, geniş bir araç yelpazesinden seçim yapabilmeleri ve istedikleri zaman diliminde araç rezervasyonu gerçekleştirebilmeleri için tasarlanan bu uygulama, harita tabanlı bir arayüz sunarak, araçların mevcut konumlarına göre kolayca bulunmasını sağlar.
 
 <img src="https://github.com/erendogan6/Aracim-Yanimda/blob/main/AracimYanimda.gif" alt0="Logo" width="300" height="640">
+
+## Azure Entegrasyonu
+Uygulamanın altyapısı, Microsoft Azure üzerinde barındırılmaktadır. Azure API Management, uygulama ve kullanıcıları arasında güvenli ve etkili bir iletişim köprüsü kurarken, Azure SQL Database (MySQL), uygulamanın veri depolama ihtiyaçlarını karşılar. Bu entegrasyon, uygulamanın yüksek performanslı, güvenilir ve ölçeklenebilir olmasını sağlar. Ayrıca, Azure'un sağladığı güvenlik ve yönetim özellikleri, kullanıcı verilerinin korunmasında ve uygulamanın sorunsuz çalışmasında hayati rol oynar.
+
+## Web Uygulaması Hakkında
+"Aracım Yanımda" mobil uygulaması, aynı zamanda yöneticilere ve araç kiralama firmalarının sahiplerine yönelik bir web platformu ile tam entegre çalışmaktadır. Bu entegrasyon sayesinde, yöneticiler araç ekleme, çıkarma ve rezervasyon yönetimi gibi işlemleri web üzerinden gerçekleştirebilirken, kullanıcılar da mobil uygulama üzerinden bu değişiklikleri gerçek zamanlı olarak görebilir ve buna göre rezervasyon yapabilirler. Bu bütünleşik sistem, araç kiralama sürecini hem yönetici hem de kullanıcı için daha verimli ve erişilebilir hale getirir. Web uygulamasına buradan ulaşabilirsiniz: [Aracım Yanımda Web Uygulaması](https://github.com/Kkyyasin/AracYanimda) 
+
 
 ## Özellikler
 - **Konum Bazlı Arama**: Kullanıcıların bulundukları konuma yakın kiralık araçları harita üzerinde görüntülemelerini sağlar.
